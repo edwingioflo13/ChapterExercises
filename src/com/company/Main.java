@@ -12,17 +12,22 @@ public class Main {
     int point = 0;
     boolean gameOn = true;
 
+    boolean draw = false;
+
     do {
       System.out.println("Quien anoto? Jugador 1 (Presione 1), Jugador 2 (Presione 2): ");
       point = sc.nextInt();
+
+      draw = (scorePlayer1 == 3) && (scorePlayer2 == 3);
+
       if(point == 1){
-        if(scorePlayer1==3 && scorePlayer2<=2){
+        if(scorePlayer1 >= 3 && scorePlayer1 - scorePlayer2 >= 1){
           gameOn = false;
         }
         scorePlayer1++;
       }
       if(point == 2){
-        if(scorePlayer2==3 && scorePlayer1<=2){
+        if(scorePlayer2 >= 3 && scorePlayer2 - scorePlayer1 >= 1){
           gameOn = false;
         }
         scorePlayer2++;
