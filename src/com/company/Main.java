@@ -6,7 +6,7 @@ public class Main {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    int[] scores = {0, 15, 30, 40};
+    String [] scores = {"0", "15", "30", "40", "Advantage"};
     int scorePlayer1 = 0;
     int scorePlayer2 = 0;
     int point = 0;
@@ -18,11 +18,13 @@ public class Main {
       System.out.println("Quien anoto? Jugador 1 (Presione 1), Jugador 2 (Presione 2): ");
       point = sc.nextInt();
 
-      draw = (scorePlayer1 == 3) && (scorePlayer2 == 3);
-
       if(point == 1){
         if(scorePlayer1 >= 3 && scorePlayer1 - scorePlayer2 >= 1){
           gameOn = false;
+        }
+        if(scorePlayer2==4){
+          scorePlayer1--;
+          scorePlayer2--;
         }
         scorePlayer1++;
       }
@@ -30,7 +32,15 @@ public class Main {
         if(scorePlayer2 >= 3 && scorePlayer2 - scorePlayer1 >= 1){
           gameOn = false;
         }
+        if(scorePlayer1==4){
+          scorePlayer1--;
+          scorePlayer2--;
+        }
         scorePlayer2++;
+      }
+      if(gameOn){
+        System.out.println("Jugador 1: " + scores[scorePlayer1]);
+        System.out.println("Jugador 2: " + scores[scorePlayer2]);
       }
     } while (gameOn);
   }
